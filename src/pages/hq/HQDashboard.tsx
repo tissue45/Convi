@@ -99,7 +99,7 @@ const HQDashboard: React.FC = () => {
   const fetchStores = async () => {
     try {
       console.log('🏪 지점 목록 조회 시작...');
-      
+
       // 지점 목록 조회 (소유자 정보 없이)
       const { data: storesData, error: storesError } = await supabase
         .from('stores')
@@ -127,7 +127,7 @@ const HQDashboard: React.FC = () => {
   const fetchStoreStats = async () => {
     try {
       console.log('📊 지점별 통계 조회 시작...');
-      
+
       // 지점별 주문 통계
       const { data: orderStats, error: orderError } = await supabase
         .from('orders')
@@ -171,7 +171,7 @@ const HQDashboard: React.FC = () => {
       orderStats?.forEach(order => {
         const storeId = order.store_id;
         const storeName = order.stores?.name || '알 수 없는 지점';
-        
+
         if (storeId && !statsMap.has(storeId)) {
           statsMap.set(storeId, {
             store_id: storeId,
@@ -190,7 +190,7 @@ const HQDashboard: React.FC = () => {
           if (stats) {
             stats.total_orders++;
             stats.total_revenue += order.total_amount;
-            
+
             if (order.status === 'pending') {
               stats.pending_orders++;
             }
@@ -206,7 +206,7 @@ const HQDashboard: React.FC = () => {
       stockStats?.forEach(product => {
         const storeId = product.store_id;
         const storeName = product.stores?.name || '알 수 없는 지점';
-        
+
         if (storeId && !statsMap.has(storeId)) {
           statsMap.set(storeId, {
             store_id: storeId,
@@ -232,7 +232,7 @@ const HQDashboard: React.FC = () => {
       supplyRequestStats?.forEach(request => {
         const storeId = request.store_id;
         const storeName = request.stores?.name || '알 수 없는 지점';
-        
+
         if (storeId && !statsMap.has(storeId)) {
           statsMap.set(storeId, {
             store_id: storeId,
@@ -287,7 +287,7 @@ const HQDashboard: React.FC = () => {
   const fetchCouponStats = async () => {
     try {
       console.log('🎫 쿠폰 통계 조회 시작...');
-      
+
       // 쿠폰 정보 조회
       const { data: coupons, error: couponError } = await supabase
         .from('coupons')
@@ -339,7 +339,7 @@ const HQDashboard: React.FC = () => {
   const fetchPointStats = async () => {
     try {
       console.log('💰 포인트 통계 조회 시작...');
-      
+
       // 포인트 정보 조회
       const { data: points, error: pointError } = await supabase
         .from('points')
@@ -357,7 +357,7 @@ const HQDashboard: React.FC = () => {
 
       // 포인트 데이터 저장
       setPointsData(points || []);
-      
+
       // 회원 수만 별도로 업데이트
       setPointStats(prev => ({
         ...prev,
@@ -542,7 +542,7 @@ const HQDashboard: React.FC = () => {
                     <div className="flex justify-between">
                       <span className="text-gray-600">최근 주문:</span>
                       <span className="font-medium">
-                        {stats.last_order_date 
+                        {stats.last_order_date
                           ? new Date(stats.last_order_date).toLocaleDateString()
                           : '주문 없음'
                         }
@@ -575,21 +575,19 @@ const HQDashboard: React.FC = () => {
           <nav className="flex space-x-8" aria-label="Tabs">
             <button
               onClick={() => setActiveTab('coupons')}
-              className={`py-4 px-6 border-b-2 font-medium text-sm ${
-                activeTab === 'coupons'
+              className={`py-4 px-6 border-b-2 font-medium text-sm ${activeTab === 'coupons'
                   ? 'border-blue-500 text-blue-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               🎫 쿠폰 관리
             </button>
             <button
               onClick={() => setActiveTab('points')}
-              className={`py-4 px-6 border-b-2 font-medium text-sm ${
-                activeTab === 'points'
+              className={`py-4 px-6 border-b-2 font-medium text-sm ${activeTab === 'points'
                   ? 'border-green-500 text-green-600'
                   : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               💰 포인트 관리
             </button>
@@ -609,7 +607,7 @@ const HQDashboard: React.FC = () => {
                   쿠폰 관리하기
                 </button>
               </div>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">{couponStats.total_coupons}</div>
@@ -628,23 +626,23 @@ const HQDashboard: React.FC = () => {
                   <div className="text-sm text-gray-600">총 할인 금액</div>
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">쿠폰 사용률</span>
                   <span className="font-medium">
-                    {couponStats.total_coupons > 0 
+                    {couponStats.total_coupons > 0
                       ? Math.round((couponStats.used_coupons / couponStats.total_coupons) * 100)
                       : 0}%
                   </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-blue-600 h-3 rounded-full transition-all" 
-                    style={{ 
-                      width: `${couponStats.total_coupons > 0 
-                        ? (couponStats.used_coupons / couponStats.total_coupons) * 100 
-                        : 0}%` 
+                  <div
+                    className="bg-blue-600 h-3 rounded-full transition-all"
+                    style={{
+                      width: `${couponStats.total_coupons > 0
+                        ? (couponStats.used_coupons / couponStats.total_coupons) * 100
+                        : 0}%`
                     }}
                   />
                 </div>
@@ -663,7 +661,7 @@ const HQDashboard: React.FC = () => {
                   포인트 관리하기
                 </button>
               </div>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600">{pointStats.total_points_issued.toLocaleString()}P</div>
@@ -679,30 +677,30 @@ const HQDashboard: React.FC = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-purple-600">
-                    {pointStats.total_members > 0 
+                    {pointStats.total_members > 0
                       ? Math.round(pointStats.active_points / pointStats.total_members).toLocaleString()
                       : 0}P
                   </div>
                   <div className="text-sm text-gray-600">회원당 평균</div>
                 </div>
               </div>
-              
+
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">포인트 사용률</span>
                   <span className="font-medium">
-                    {pointStats.total_points_issued > 0 
+                    {pointStats.total_points_issued > 0
                       ? Math.round((pointStats.total_points_used / pointStats.total_points_issued) * 100)
                       : 0}%
                   </span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-green-600 h-3 rounded-full transition-all" 
-                    style={{ 
-                      width: `${pointStats.total_points_issued > 0 
-                        ? (pointStats.total_points_used / pointStats.total_points_issued) * 100 
-                        : 0}%` 
+                  <div
+                    className="bg-green-600 h-3 rounded-full transition-all"
+                    style={{
+                      width: `${pointStats.total_points_issued > 0
+                        ? (pointStats.total_points_used / pointStats.total_points_issued) * 100
+                        : 0}%`
                     }}
                   />
                 </div>
@@ -719,7 +717,7 @@ const HQDashboard: React.FC = () => {
             <h3 className="text-lg font-semibold text-red-900">🚨 긴급 처리 필요</h3>
             <p className="text-sm text-red-700">승인 대기중인 물류 요청이 있습니다</p>
           </div>
-          
+
           <div className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
@@ -735,10 +733,10 @@ const HQDashboard: React.FC = () => {
                 <div className="text-sm text-gray-600">총 요청 금액</div>
               </div>
             </div>
-            
+
             <div className="mt-6 text-center">
               <button
-                onClick={() => window.location.href = '/hq/supply'}
+                onClick={() => navigate('/hq/supply')}
                 className="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors"
               >
                 물류 요청 관리로 이동

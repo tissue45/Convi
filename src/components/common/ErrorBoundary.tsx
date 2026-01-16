@@ -22,7 +22,7 @@ class ErrorBoundary extends Component<Props, State> {
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.error('ErrorBoundary caught an error:', error, errorInfo);
-    
+
     // Here you can also log the error to an error reporting service
     // For example: logErrorToService(error, errorInfo);
   }
@@ -62,7 +62,7 @@ class ErrorBoundary extends Component<Props, State> {
                 <p className="text-gray-600 mb-6">
                   예상치 못한 오류가 발생했습니다. 페이지를 새로고침하거나 잠시 후 다시 시도해 주세요.
                 </p>
-                
+
                 {process.env.NODE_ENV === 'development' && this.state.error && (
                   <details className="text-left bg-gray-100 p-4 rounded-lg mb-4">
                     <summary className="cursor-pointer font-medium text-gray-700 mb-2">
@@ -73,7 +73,7 @@ class ErrorBoundary extends Component<Props, State> {
                     </pre>
                   </details>
                 )}
-                
+
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={() => window.location.reload()}
@@ -82,7 +82,7 @@ class ErrorBoundary extends Component<Props, State> {
                     페이지 새로고침
                   </button>
                   <button
-                    onClick={() => window.location.href = '/'}
+                    onClick={() => window.location.href = import.meta.env.BASE_URL}
                     className="flex-1 bg-gray-200 text-gray-800 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                   >
                     홈으로 이동

@@ -28,7 +28,7 @@ const LandingPage: React.FC = () => {
 
   const getDashboardLink = () => {
     if (!user) return '/auth';
-    
+
     switch (user.role) {
       case 'customer':
         return '/customer';
@@ -90,7 +90,7 @@ const LandingPage: React.FC = () => {
               <span className="text-primary-600"> 디지털 혁신</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              고객, 점주, 본사가 모두 만족하는 통합 플랫폼으로 
+              고객, 점주, 본사가 모두 만족하는 통합 플랫폼으로
               편의점 비즈니스를 더욱 스마트하게 만들어보세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -104,9 +104,9 @@ const LandingPage: React.FC = () => {
                   📋 사용자 매뉴얼 보기
                 </Button>
               </Link>
-              <Button 
-                variant="outline" 
-                size="lg" 
+              <Button
+                variant="outline"
+                size="lg"
                 className="w-full sm:w-auto"
                 onClick={() => setShowDemo(true)}
               >
@@ -139,7 +139,7 @@ const LandingPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">고객</h3>
               <p className="text-gray-600 mb-6">
-                간편한 주문부터 픽업까지, 
+                간편한 주문부터 픽업까지,
                 편리한 쇼핑 경험을 제공합니다.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -158,7 +158,7 @@ const LandingPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">점주</h3>
               <p className="text-gray-600 mb-6">
-                효율적인 매장 관리와 
+                효율적인 매장 관리와
                 실시간 재고 관리를 지원합니다.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -177,7 +177,7 @@ const LandingPage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">본사</h3>
               <p className="text-gray-600 mb-6">
-                전체 지점의 통합 관리와 
+                전체 지점의 통합 관리와
                 데이터 기반 의사결정을 지원합니다.
               </p>
               <ul className="text-sm text-gray-600 space-y-2">
@@ -222,56 +222,56 @@ const LandingPage: React.FC = () => {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => {
-                    if (!isAuthenticated) {
-                    window.location.href = '/auth';
-                    return;
-                    }
-                    if (user?.role === 'customer') {
-                    window.location.href = '/customer';
-                    } else {
-                    alert('계정을 확인해주세요!');
-                    }
-                  }}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => {
+                      if (!isAuthenticated) {
+                        window.location.href = import.meta.env.BASE_URL + 'auth';
+                        return;
+                      }
+                      if (user?.role === 'customer') {
+                        window.location.href = import.meta.env.BASE_URL + 'customer';
+                      } else {
+                        alert('계정을 확인해주세요!');
+                      }
+                    }}
                   >
-                  고객 앱
+                    고객 앱
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => {
-                    if (!isAuthenticated) {
-                    window.location.href = '/auth';
-                    return;
-                    }
-                    if (user?.role === 'store_owner') {
-                    window.location.href = '/store';
-                    } else {
-                    alert('계정을 확인해주세요!');
-                    }
-                  }}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => {
+                      if (!isAuthenticated) {
+                        window.location.href = '/auth';
+                        return;
+                      }
+                      if (user?.role === 'store_owner') {
+                        window.location.href = import.meta.env.BASE_URL + 'store';
+                      } else {
+                        alert('계정을 확인해주세요!');
+                      }
+                    }}
                   >
-                  점주 대시보드
+                    점주 대시보드
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => {
-                    if (!isAuthenticated) {
-                    window.location.href = '/auth';
-                    return;
-                    }
-                    if (user?.role === 'headquarters' || user?.role === 'hq_admin') {
-                    window.location.href = '/hq';
-                    } else {
-                    alert('계정을 확인해주세요!');
-                    }
-                  }}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => {
+                      if (!isAuthenticated) {
+                        window.location.href = '/auth';
+                        return;
+                      }
+                      if (user?.role === 'headquarters' || user?.role === 'hq_admin') {
+                        window.location.href = import.meta.env.BASE_URL + 'hq';
+                      } else {
+                        alert('계정을 확인해주세요!');
+                      }
+                    }}
                   >
-                  본사 관리 시스템
+                    본사 관리 시스템
                   </button>
                 </li>
               </ul>
@@ -281,26 +281,26 @@ const LandingPage: React.FC = () => {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/support/customer'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'support/customer'}
                   >
-                  고객센터
+                    고객센터
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/support/qa'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'support/qa'}
                   >
-                  문의하기
+                    문의하기
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/support/faq'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'support/faq'}
                   >
-                  FAQ
+                    FAQ
                   </button>
                 </li>
               </ul>
@@ -310,26 +310,26 @@ const LandingPage: React.FC = () => {
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/company/about'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'company/about'}
                   >
-                  소개
+                    소개
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/company/careers'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'company/careers'}
                   >
-                  채용
+                    채용
                   </button>
                 </li>
                 <li>
                   <button
-                  className="p-0 text-left text-gray-400 hover:underline"
-                  onClick={() => window.location.href = '/company/privacy'}
+                    className="p-0 text-left text-gray-400 hover:underline"
+                    onClick={() => window.location.href = import.meta.env.BASE_URL + 'company/privacy'}
                   >
-                  개인정보처리방침
+                    개인정보처리방침
                   </button>
                 </li>
               </ul>
