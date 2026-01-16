@@ -27,19 +27,19 @@ const HQHeader: React.FC = () => {
                 try {
                   const result = await signOut();
                   console.log('🔓 로그아웃 결과:', result);
-                  
+
                   if (result.success) {
                     // 성공하면 1초 후 리다이렉트
                     setTimeout(() => {
                       console.log('🔄 성공 후 페이지 이동');
-                      window.location.href = '/';
+                      navigate('/');
                     }, 1000);
                   } else {
                     // 실패하면 강제 로그아웃
                     console.warn('⚠️ 일반 로그아웃 실패, 강제 로그아웃 시도');
                     forceSignOut();
                   }
-                  
+
                 } catch (error) {
                   console.warn('⚠️ 로그아웃 중 예외, 강제 로그아웃:', error);
                   // 예외 발생 시 강제 로그아웃

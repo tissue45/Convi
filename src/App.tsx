@@ -103,7 +103,7 @@ function App() {
     const initAccessibility = () => {
       console.log('♿ 접근성 기능 초기화 중...');
       enhanceFocusVisibility();
-      
+
       // 개발 모드에서만 접근성 검사
       if (process.env.NODE_ENV === 'development') {
         // 페이지 로드 후 1초 뒤에 접근성 검사
@@ -111,7 +111,7 @@ function App() {
           checkAccessibility();
         }, 1000);
       }
-      
+
       console.log('✅ 접근성 기능 초기화 완료');
     };
 
@@ -137,104 +137,104 @@ function App() {
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ToastProvider>
-          <Router>
+          <Router basename={import.meta.env.BASE_URL}>
             <div className="min-h-screen bg-gray-50">
               <main id="main-content">
                 <Routes>
-            {/* Public Routes */}
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/auth" element={<AuthPage />} />
+                  {/* Public Routes */}
+                  <Route path="/" element={<LandingPage />} />
+                  <Route path="/auth" element={<AuthPage />} />
 
-            <Route path="/test-store-selection" element={<StoreSelection />} />
-            <Route path="/test-products" element={<ProductCatalog />} />
-            
-            {/* Customer Routes */}
-            <Route path="/customer" element={<CustomerLayout />}>
-              <Route index element={<CustomerHome />} />
-              <Route path="home" element={<CustomerHome />} />
-              <Route path="store" element={<StoreSelection />} />
-              <Route path="products" element={<ProductCatalog />} />
-              <Route path="cart" element={<CartPage />} />
-              <Route path="checkout" element={<Checkout />} />
-              <Route path="orders" element={<CustomerOrders />} />
-              <Route path="orders/:orderId" element={<OrderTracking />} />
-              <Route path="orders/:orderId/tracking" element={<OrderTracking />} />
-              <Route path="categories" element={<CustomerCategories />} />
-              <Route path="profile" element={<CustomerProfile />} />
-              <Route path="promotions" element={<PromotionProducts />} />
-              <Route path="refunds" element={<CustomerRefunds />} />
-              <Route path="refunds/create" element={<CreateRefund />} />
-            </Route>
+                  <Route path="/test-store-selection" element={<StoreSelection />} />
+                  <Route path="/test-products" element={<ProductCatalog />} />
 
-            {/* Payment Routes */}
-            <Route path="/payment/success" element={<PaymentSuccess />} />
-            <Route path="/payment/fail" element={<PaymentFail />} />
-            <Route path="/payment/kakao/success" element={<PaymentSuccess />} />
-            <Route path="/payment/kakao/fail" element={<PaymentFail />} />
-            <Route path="/payment/kakao/cancel" element={<PaymentFail />} />
+                  {/* Customer Routes */}
+                  <Route path="/customer" element={<CustomerLayout />}>
+                    <Route index element={<CustomerHome />} />
+                    <Route path="home" element={<CustomerHome />} />
+                    <Route path="store" element={<StoreSelection />} />
+                    <Route path="products" element={<ProductCatalog />} />
+                    <Route path="cart" element={<CartPage />} />
+                    <Route path="checkout" element={<Checkout />} />
+                    <Route path="orders" element={<CustomerOrders />} />
+                    <Route path="orders/:orderId" element={<OrderTracking />} />
+                    <Route path="orders/:orderId/tracking" element={<OrderTracking />} />
+                    <Route path="categories" element={<CustomerCategories />} />
+                    <Route path="profile" element={<CustomerProfile />} />
+                    <Route path="promotions" element={<PromotionProducts />} />
+                    <Route path="refunds" element={<CustomerRefunds />} />
+                    <Route path="refunds/create" element={<CreateRefund />} />
+                  </Route>
 
-            {/* Store Routes */}
-            <Route
-              path="/store"
-              element={
-                <ProtectedRoute allowedRoles={['store_owner']}>
-                  <StoreLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<StoreDashboard />} />
-              <Route path="orders" element={<StoreOrders />} />
-              <Route path="inventory" element={<StoreInventory />} />
-              <Route path="supply" element={<StoreSupply />} />
-              <Route path="analytics" element={<StoreAnalytics />} />
-              <Route path="inventory-analytics" element={<StoreInventoryAnalytics />} />
-              <Route path="refunds" element={<StoreRefunds />} />
-            </Route>
+                  {/* Payment Routes */}
+                  <Route path="/payment/success" element={<PaymentSuccess />} />
+                  <Route path="/payment/fail" element={<PaymentFail />} />
+                  <Route path="/payment/kakao/success" element={<PaymentSuccess />} />
+                  <Route path="/payment/kakao/fail" element={<PaymentFail />} />
+                  <Route path="/payment/kakao/cancel" element={<PaymentFail />} />
 
-            {/* HQ Routes */}
-            <Route
-              path="/hq"
-              element={
-                <ProtectedRoute allowedRoles={['headquarters', 'hq_admin']}>
-                  <HQLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="dashboard" replace />} />
-              <Route path="dashboard" element={<HQDashboard />} />
-              <Route path="stores" element={<HQStores />} />
-              <Route path="products" element={<HQProducts />} />
-              <Route path="product-excel-template" element={<ProductExcelTemplate />} />
-              <Route path="members" element={<HQMembers />} />
-              <Route path="supply" element={<HQSupply />} />
-              <Route path="analytics" element={<HQAnalytics />} />
-            </Route>
+                  {/* Store Routes */}
+                  <Route
+                    path="/store"
+                    element={
+                      <ProtectedRoute allowedRoles={['store_owner']}>
+                        <StoreLayout />
+                      </ProtectedRoute>
+                    }
+                  >
+                    <Route index element={<Navigate to="dashboard" replace />} />
+                    <Route path="dashboard" element={<StoreDashboard />} />
+                    <Route path="orders" element={<StoreOrders />} />
+                    <Route path="inventory" element={<StoreInventory />} />
+                    <Route path="supply" element={<StoreSupply />} />
+                    <Route path="analytics" element={<StoreAnalytics />} />
+                    <Route path="inventory-analytics" element={<StoreInventoryAnalytics />} />
+                    <Route path="refunds" element={<StoreRefunds />} />
+                  </Route>
 
-            {/* Support Routes */}
-            <Route path="/support">
-              <Route path="customer" element={<CustomerSupport />} />
-              <Route path="qa" element={<QASupport />} />
-              <Route path="faq" element={<FAQSupport />} />
-            </Route>
+                  {/* HQ Routes */}
+                  <Route
+                    path="/hq"
+                    element={
+                      <ProtectedRoute allowedRoles={['headquarters', 'hq_admin']}>
+                        <HQLayout />
+                      </ProtectedRoute>
+                    }
+                  >
+                    <Route index element={<Navigate to="dashboard" replace />} />
+                    <Route path="dashboard" element={<HQDashboard />} />
+                    <Route path="stores" element={<HQStores />} />
+                    <Route path="products" element={<HQProducts />} />
+                    <Route path="product-excel-template" element={<ProductExcelTemplate />} />
+                    <Route path="members" element={<HQMembers />} />
+                    <Route path="supply" element={<HQSupply />} />
+                    <Route path="analytics" element={<HQAnalytics />} />
+                  </Route>
 
-            {/* Company Routes */}
-            <Route path="/company">
-              <Route path="about" element={<About />} />
-              <Route path="careers" element={<Careers />} />
-              <Route path="privacy" element={<Privacy />} />
-            </Route>
+                  {/* Support Routes */}
+                  <Route path="/support">
+                    <Route path="customer" element={<CustomerSupport />} />
+                    <Route path="qa" element={<QASupport />} />
+                    <Route path="faq" element={<FAQSupport />} />
+                  </Route>
 
-            {/* Manual Routes */}
-            <Route path="/manual">
-              <Route index element={<ManualMain />} />
-              <Route path="customer" element={<CustomerManual />} />
-              <Route path="store" element={<StoreManual />} />
-              <Route path="hq" element={<HQManual />} />
-            </Route>
+                  {/* Company Routes */}
+                  <Route path="/company">
+                    <Route path="about" element={<About />} />
+                    <Route path="careers" element={<Careers />} />
+                    <Route path="privacy" element={<Privacy />} />
+                  </Route>
 
-            {/* 404 Page */}
-            <Route path="*" element={<NotFoundPage />} />
+                  {/* Manual Routes */}
+                  <Route path="/manual">
+                    <Route index element={<ManualMain />} />
+                    <Route path="customer" element={<CustomerManual />} />
+                    <Route path="store" element={<StoreManual />} />
+                    <Route path="hq" element={<HQManual />} />
+                  </Route>
+
+                  {/* 404 Page */}
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
             </div>
