@@ -31,7 +31,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
   const mapRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
+  const [userLocation, setUserLocation] = useState<{ lat: number, lng: number } | null>(null);
   const [realStores, setRealStores] = useState<MapStore[]>([]);
   const isDataLoaded = useRef(false);
   const markersRef = useRef<any[]>([]);
@@ -43,16 +43,16 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
       console.log('🔄 이미 지점 데이터 로딩 중 - 중복 호출 차단');
       return;
     }
-    
+
     // 캐시된 데이터가 있으면 사용
     if (storeDataCache.length > 0) {
       console.log('💾 캐시된 지점 데이터 사용:', storeDataCache.length, '개 지점');
       setRealStores(storeDataCache);
       return;
     }
-    
+
     isStoreDataLoading = true;
-    
+
     try {
       console.log('📍 지점 데이터 로드 시작...');
       const { data: storesData, error } = await supabase
@@ -74,10 +74,10 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
       }
 
       const storesWithCoordinates: MapStore[] = [];
-      
+
       for (const store of storesData) {
         const geocodingResult = await geocodeAddress(store.address);
-        
+
         if (geocodingResult.success && geocodingResult.coordinates) {
           storesWithCoordinates.push({
             id: store.id,
@@ -98,7 +98,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
       storeDataCache = storesWithCoordinates;
       setRealStores(storesWithCoordinates);
       console.log('📍 지점 데이터 로드 완료:', storesWithCoordinates.length, '개 지점');
-      
+
     } catch (error) {
       console.error('지점 좌표 변환 중 오류:', error);
     } finally {
@@ -110,11 +110,11 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
     const dLng = (lng2 - lng1) * Math.PI / 180;
-    const a = 
-      Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-      Math.sin(dLng/2) * Math.sin(dLng/2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return R * c;
   };
 
@@ -125,18 +125,18 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
         .select('*')
         .eq('id', storeId)
         .single();
-      
+
       if (error) {
         console.error('❌ 최신 지점 정보 조회 실패:', error);
         alert('지점 정보를 불러오는데 실패했습니다.');
         return;
       }
-      
+
       if (!latestStore.is_active) {
         alert('이 지점은 현재 운영 중단 상태입니다.');
         return;
       }
-      
+
       const updatedStore = {
         id: latestStore.id,
         name: latestStore.name,
@@ -160,7 +160,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
         created_at: latestStore.created_at,
         updated_at: latestStore.updated_at
       };
-      
+
       localStorage.setItem('selectedStore', JSON.stringify(updatedStore));
       navigate('/customer/products');
     } catch (error) {
@@ -195,12 +195,12 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
         markersRef.current.push(marker);
 
         const distance = getDistanceFromCoordinates(userLat, userLng, store.lat, store.lng);
-        
+
         if (!window.naver?.maps?.InfoWindow || !window.naver?.maps?.Event) {
           console.error('네이버 지도 InfoWindow 또는 Event API가 없습니다.');
           return;
         }
-        
+
         const contentId = `store-info-${store.id}`;
         const infoWindow = new window.naver.maps.InfoWindow({
           content: `
@@ -226,7 +226,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
             infoWindow.close();
           } else {
             infoWindow.open(naverMap, marker);
-            
+
             setTimeout(() => {
               const contentElement = document.getElementById(contentId);
               if (contentElement) {
@@ -250,7 +250,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
       }
 
       const defaultCenter = new window.naver.maps.LatLng(37.5665, 126.9780);
-      
+
       const naverMap = new window.naver.maps.Map(mapRef.current, {
         center: defaultCenter,
         zoom: 13
@@ -264,7 +264,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
           console.error('네이버 지도 API 객체가 없습니다.');
           return;
         }
-        
+
         const userPosition = new window.naver.maps.LatLng(lat, lng);
         setUserLocation({ lat, lng });
 
@@ -299,19 +299,19 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
 
       if (navigator.geolocation) {
         console.log('위치 정보 요청 중...');
-        
+
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const lat = position.coords.latitude;
             const lng = position.coords.longitude;
             const accuracy = position.coords.accuracy;
-            
+
             console.log(`위치 찾기 성공: 위도 ${lat}, 경도 ${lng}, 정확도 ${accuracy}m`);
             createUserMarker(lat, lng);
           },
           (error) => {
             console.warn('위치 정보 가져오기 실패:', error.message);
-            
+
             navigator.geolocation.getCurrentPosition(
               (position) => {
                 const lat = position.coords.latitude;
@@ -350,7 +350,7 @@ const Location: React.FC<LocationProps> = ({ width = '80%', height = '600px' }) 
       }
 
       const script = document.createElement('script');
-      script.src = 'https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=mmo6s8b443';
+      script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${import.meta.env.VITE_NAVER_CLIENT_ID || 'mmo6s8b443'}`;
       script.onload = () => {
         // 스크립트 로드 후 약간의 지연을 두고 API 객체 완전 로드 확인
         setTimeout(() => {
