@@ -16,7 +16,7 @@ const locationMap: Record<string, Coordinates> = {
   '경기 포천시 선단동': { lat: 37.758249, lng: 127.210632 },
   '포천시 선당동': { lat: 37.758249, lng: 127.210632 },
   '선당동': { lat: 37.758249, lng: 127.210632 },
-  
+
   // 서울 지역 - 정확한 좌표
   '서울시 강남구': { lat: 37.5172, lng: 127.0473 },
   '서울시 서초구': { lat: 37.4836, lng: 127.0327 },
@@ -27,7 +27,7 @@ const locationMap: Record<string, Coordinates> = {
   '서울시 용산구': { lat: 37.5312, lng: 126.9810 },
   '서울시 서대문구': { lat: 37.5794, lng: 126.9368 },
   '서울시 광진구': { lat: 37.5385, lng: 127.0823 },
-  
+
   // 경기도 지역
   '경기도 수원시': { lat: 37.2636, lng: 127.0286 },
   '경기도 성남시': { lat: 37.4449, lng: 127.1388 },
@@ -36,7 +36,7 @@ const locationMap: Record<string, Coordinates> = {
   '경기도 포천시': { lat: 37.8947, lng: 127.2003 },
   '포천시': { lat: 37.8947, lng: 127.2003 },
   '포천': { lat: 37.8947, lng: 127.2003 },
-  
+
   // 기본 좌표 (서울 중심)
   '기본': { lat: 37.5665, lng: 126.9780 }
 };
@@ -56,30 +56,29 @@ export const geocodeAddress = async (address: string): Promise<GeocodingResult> 
     // 1. 먼저 프록시 서버를 통한 네이버 Geocoding API 호출 (실제 API 우선)
     try {
       console.log('🌐 프록시 서버를 통한 Geocoding API 호출 시도...');
-      
+
       // 환경에 따른 API URL 설정 - 더 명확한 방식
       const hostname = window.location.hostname;
       const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
       const isProduction = import.meta.env.PROD || hostname.includes('onrender.com');
-      
-      const baseURL = isLocalhost 
-        ? 'http://localhost:3001'  // 로컬 개발환경
-        : window.location.origin; // 프로덕션 환경 (Render 등)
-      
-      console.log('🔧 환경 정보:', {
+
+      // API URL 설정: 환경변수가 있으면 최우선으로 사용, 없으면 로컬/현재 도메인 사용
+      const baseURL = import.meta.env.VITE_API_BASE_URL || (isLocalhost
+        ? 'http://localhost:3001'
+        : window.location.origin);
+
+      console.log('🔧 API 연결 정보:', {
         hostname,
         isLocalhost,
-        isProduction,
         baseURL,
-        'import.meta.env.PROD': import.meta.env.PROD,
-        'import.meta.env.DEV': import.meta.env.DEV
+        envBaseURL: import.meta.env.VITE_API_BASE_URL
       });
-      
+
       const response = await fetch(`${baseURL}/api/geocode?query=${encodeURIComponent(normalizedAddress)}`);
-      
+
       if (response.ok) {
         const data = await response.json();
-        
+
         if (data.success && data.coordinates) {
           console.log('✅ 프록시 서버 API 호출 성공:', normalizedAddress, '->', data.coordinates);
           return {
@@ -99,7 +98,7 @@ export const geocodeAddress = async (address: string): Promise<GeocodingResult> 
 
     // 2. 프록시 서버 실패 시 로컬 매핑에서 찾기 (백업)
     console.log('📋 로컬 매핑에서 백업 좌표 찾는 중...');
-    
+
     // 정확한 매칭 시도
     if (locationMap[normalizedAddress]) {
       console.log('✅ 로컬 매핑에서 찾음 (백업):', normalizedAddress, '->', locationMap[normalizedAddress]);
@@ -137,18 +136,18 @@ export const geocodeAddress = async (address: string): Promise<GeocodingResult> 
 };
 
 export const getDistanceFromCoordinates = (
-  lat1: number, 
-  lng1: number, 
-  lat2: number, 
+  lat1: number,
+  lng1: number,
+  lat2: number,
   lng2: number
 ): number => {
   const R = 6371;
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLng = (lng2 - lng1) * Math.PI / 180;
-  const a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-    Math.sin(dLng/2) * Math.sin(dLng/2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 };
