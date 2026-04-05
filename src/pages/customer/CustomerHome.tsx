@@ -541,30 +541,31 @@ const CustomerHome: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="px-4 py-6">
         {/* 인사말 섹션 */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 mb-1">
+        <div className="mb-6 overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 p-5 text-white shadow-lg shadow-blue-500/25">
+          <p className="text-sm font-medium text-white/90">오늘도 좋은 하루 되세요</p>
+          <h1 className="mt-1 text-2xl font-bold tracking-tight">
             {getGreeting()}, {getDisplayName()}님!
           </h1>
-          <p className="text-gray-600">
-            편리한 편의점 쇼핑을 시작해보세요
+          <p className="mt-2 text-sm text-white/85">
+            근처 매장 특가와 빠른 픽업으로 편하게 쇼핑해 보세요.
           </p>
         </div>
 
         {/* 현재 선택된 지점 */}
-        <div className="bg-white rounded-lg p-4 mb-6 shadow-sm border border-gray-200">
+        <div className="mb-6 rounded-2xl border border-blue-100/80 bg-white/90 p-4 shadow-md shadow-blue-900/5 ring-1 ring-white/60 backdrop-blur-sm">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="mr-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-100 to-blue-100">
+                <svg className="h-6 w-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm text-gray-500">현재 선택 지점</p>
+                <p className="text-xs font-medium uppercase tracking-wide text-blue-600/80">현재 선택 지점</p>
                 <p className="font-semibold text-gray-900">
                   {(() => {
                     const storeData = localStorage.getItem('selectedStore');
@@ -575,7 +576,7 @@ const CustomerHome: React.FC = () => {
             </div>
             <button
               onClick={handleStoreSelect}
-              className="text-blue-600 text-sm font-medium hover:text-blue-700"
+              className="rounded-full bg-blue-50 px-3 py-1.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
             >
               {localStorage.getItem('selectedStore') ? '변경' : '선택'}
             </button>
@@ -584,8 +585,11 @@ const CustomerHome: React.FC = () => {
 
         {/* 행사 상품 섹션 */}
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-gray-900">🎉 행사 상품</h2>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500" aria-hidden />
+              행사 상품
+            </h2>
             <div className="flex items-center gap-2">
               <span className="text-xs text-gray-500">
                 {promotionProducts
@@ -596,7 +600,7 @@ const CustomerHome: React.FC = () => {
               </span>
               <button
                 onClick={() => navigate('/customer/promotions')}
-                className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                className="text-sm font-semibold text-purple-600 transition hover:text-purple-800"
               >
                 전체보기
               </button>
@@ -606,37 +610,37 @@ const CustomerHome: React.FC = () => {
             selectedPromotionFilter === 'all' || 
             product.promotionType === selectedPromotionFilter
           ).length > 0 ? (
-            <div className="bg-white rounded-lg border border-gray-200 max-h-64 overflow-hidden">
+            <div className="max-h-64 overflow-hidden rounded-2xl border border-blue-100/80 bg-white/95 shadow-md shadow-blue-900/5">
               <div className="h-64 overflow-y-auto">
                 <div className="p-4 space-y-4">
                   {/* 필터 버튼 */}
                   <div className="flex gap-2 overflow-x-auto pb-2">
                     <button 
                       onClick={() => setSelectedPromotionFilter('all')}
-                      className={`flex-shrink-0 px-3 py-1 text-sm rounded-full ${
+                      className={`flex-shrink-0 rounded-full px-3 py-1 text-sm font-medium ${
                         selectedPromotionFilter === 'all'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-sm'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       전체
                     </button>
                     <button 
                       onClick={() => setSelectedPromotionFilter('buy_one_get_one')}
-                      className={`flex-shrink-0 px-3 py-1 text-sm rounded-full ${
+                      className={`flex-shrink-0 rounded-full px-3 py-1 text-sm font-medium ${
                         selectedPromotionFilter === 'buy_one_get_one'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-sm'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       1+1 행사
                     </button>
                     <button 
                       onClick={() => setSelectedPromotionFilter('buy_two_get_one')}
-                      className={`flex-shrink-0 px-3 py-1 text-sm rounded-full ${
+                      className={`flex-shrink-0 rounded-full px-3 py-1 text-sm font-medium ${
                         selectedPromotionFilter === 'buy_two_get_one'
-                          ? 'bg-blue-500 text-white'
-                          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-sm'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       2+1 행사
@@ -651,7 +655,7 @@ const CustomerHome: React.FC = () => {
                         product.promotionType === selectedPromotionFilter
                       )
                       .map((product) => (
-                      <div key={product.id} className="bg-gray-50 rounded-lg p-3 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                      <div key={product.id} className="rounded-xl border border-gray-100 bg-gradient-to-b from-white to-blue-50/40 p-3 shadow-sm transition-shadow duration-200 hover:shadow-md hover:ring-1 hover:ring-blue-200/60">
                         <div className="flex items-center justify-between mb-2">
                           <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
                             product.promotionType === 'buy_one_get_one' 
@@ -680,8 +684,8 @@ const CustomerHome: React.FC = () => {
                   </div>
                   
                   {/* 하단 정보 */}
-                  <div className="bg-blue-50 rounded-lg p-3 text-center">
-                    <p className="text-sm text-blue-700">
+                  <div className="rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 p-3 text-center ring-1 ring-indigo-100/80">
+                    <p className="text-sm font-medium text-indigo-900">
                       💡 행사 상품은 매장별로 재고 상황이 다를 수 있습니다
                     </p>
                   </div>
@@ -689,7 +693,7 @@ const CustomerHome: React.FC = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-gray-50 rounded-lg p-6 text-center">
+            <div className="rounded-2xl border border-dashed border-gray-200 bg-white/70 p-6 text-center backdrop-blur-sm">
               <div className="text-gray-400 mb-2">
                 <svg className="w-12 h-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
@@ -705,7 +709,7 @@ const CustomerHome: React.FC = () => {
               </p>
               <button
                 onClick={() => navigate('/customer/products')}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm"
+                className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition hover:from-blue-600 hover:to-purple-700"
               >
                 전체 상품 보기
               </button>
@@ -716,12 +720,15 @@ const CustomerHome: React.FC = () => {
         {/* 특가 혜택 배너 */}
         {promotionBanners.length > 0 && (
         <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-gray-900">🎉 특가 혜택</h2>
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900">
+                <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600" aria-hidden />
+                특가 혜택
+              </h2>
             </div>
           <div 
             onClick={() => navigate('/customer/promotions')}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-4 text-white hover:from-blue-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 cursor-pointer"
+            className="cursor-pointer rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 p-5 text-white shadow-lg shadow-blue-500/30 transition-all duration-200 hover:scale-[1.02] hover:shadow-xl"
           >
             <div className="flex justify-between items-center">
               <div>
@@ -743,16 +750,19 @@ const CustomerHome: React.FC = () => {
 
         {/* 빠른 카테고리 */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">빠른 쇼핑</h2>
-          <div className="grid grid-cols-3 gap-4">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500" aria-hidden />
+            빠른 쇼핑
+          </h2>
+          <div className="grid grid-cols-3 gap-3">
             {quickCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryClick(category)}
-                className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200"
+                className="rounded-2xl border border-white/80 bg-white/90 p-3 shadow-md shadow-blue-900/5 ring-1 ring-blue-100/60 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:ring-blue-200"
               >
-                <div className="text-2xl mb-2">{category.icon}</div>
-                <p className="text-sm font-medium text-gray-900">{category.name}</p>
+                <div className="mb-1 text-2xl">{category.icon}</div>
+                <p className="line-clamp-2 text-center text-xs font-semibold text-gray-800">{category.name}</p>
               </button>
             ))}
           </div>
@@ -760,15 +770,18 @@ const CustomerHome: React.FC = () => {
 
         {/* 빠른 기능 바로가기 */}
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">빠른 기능</h2>
-          <div className="grid grid-cols-2 gap-4">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-bold text-gray-900">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-indigo-400 to-purple-500" aria-hidden />
+            빠른 기능
+          </h2>
+          <div className="grid grid-cols-2 gap-3">
             <button
               onClick={() => navigate('/customer/categories')}
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200"
+              className="rounded-2xl border border-blue-100/80 bg-white/90 p-4 text-left shadow-md shadow-blue-900/5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="mr-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-blue-100 to-indigo-100">
+                  <svg className="h-5 w-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                   </svg>
                 </div>
@@ -780,20 +793,21 @@ const CustomerHome: React.FC = () => {
             </button>
 
             <button
+              type="button"
               onClick={() => navigate('/customer/orders')}
-              className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200"
+              className="relative rounded-2xl border border-purple-100/80 bg-white/90 p-4 text-left shadow-md shadow-purple-900/5 transition-all hover:-translate-y-0.5 hover:shadow-lg"
             >
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
-                  <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="mr-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-purple-100 to-indigo-100">
+                  <svg className="h-5 w-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                   </svg>
                 </div>
-                <div className="text-left">
-                  <p className="font-medium text-gray-900">주문 내역</p>
+                <div className="relative text-left">
+                  <p className="font-semibold text-gray-900">주문 내역</p>
                   <p className="text-sm text-gray-500">주문 현황 확인</p>
                   {getItemCount() > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                    <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-xs font-bold text-white shadow-sm">
                       {getItemCount()}
                     </span>
                   )}
@@ -805,19 +819,22 @@ const CustomerHome: React.FC = () => {
 
         {/* 최근 주문 내역 */}
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-lg font-semibold text-gray-900">최근 주문</h2>
+          <div className="mb-3 flex items-center justify-between">
+            <h2 className="flex items-center gap-2 text-lg font-bold text-gray-900">
+              <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-purple-500" aria-hidden />
+              최근 주문
+            </h2>
             <button 
               onClick={handleViewAllOrders}
-              className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+              className="text-sm font-semibold text-purple-600 transition hover:text-purple-800"
             >
               전체보기
             </button>
           </div>
           
           {isLoadingOrders ? (
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
+            <div className="rounded-2xl border border-gray-100 bg-white/90 p-6 text-center shadow-md">
+              <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-2 border-blue-200 border-t-blue-600"></div>
               <p className="text-gray-500 text-sm">주문 내역을 불러오는 중...</p>
             </div>
           ) : recentOrders.length > 0 ? (
@@ -826,16 +843,16 @@ const CustomerHome: React.FC = () => {
                 <button
                   key={order.id}
                   onClick={() => handleOrderClick(order.id)}
-                  className="w-full bg-white rounded-lg p-4 shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200 text-left"
+                  className="w-full rounded-2xl border border-gray-100 bg-white/95 p-4 text-left shadow-md shadow-blue-900/5 transition-all hover:border-blue-200/80 hover:shadow-lg"
                 >
-                  <div className="flex justify-between items-start mb-2">
+                  <div className="mb-2 flex items-start justify-between">
                     <div>
-                      <p className="font-medium text-gray-900">{order.store_name}</p>
+                      <p className="font-semibold text-gray-900">{order.store_name}</p>
                       <p className="text-sm text-gray-500">
                         {order.items_count}개 상품 • {order.total_amount.toLocaleString()}원
                       </p>
                     </div>
-                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                    <span className="rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 px-2.5 py-1 text-xs font-semibold text-blue-800 ring-1 ring-blue-100">
                       {getStatusText(order.status)}
                     </span>
                   </div>
@@ -844,16 +861,16 @@ const CustomerHome: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 text-center">
-              <div className="text-gray-400 mb-2">
-                <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="rounded-2xl border border-dashed border-gray-200 bg-white/80 p-6 text-center backdrop-blur-sm">
+              <div className="mb-2 text-gray-400">
+                <svg className="mx-auto h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                 </svg>
               </div>
-              <p className="text-gray-500 text-sm mb-3">아직 주문 내역이 없습니다.</p>
+              <p className="mb-3 text-sm text-gray-500">아직 주문 내역이 없습니다.</p>
               <button
                 onClick={() => navigate('/customer/products')}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm"
+                className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition hover:from-blue-600 hover:to-purple-700"
               >
                 첫 주문하기
               </button>
@@ -862,20 +879,27 @@ const CustomerHome: React.FC = () => {
         </div>
 
         {/* 고객 지원 */}
-        <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-200 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">고객 지원</h2>
+        <div className="mb-6 rounded-2xl border border-purple-100/80 bg-gradient-to-br from-purple-50/90 via-white to-indigo-50/80 p-5 shadow-md shadow-purple-900/5 ring-1 ring-white/60">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500" aria-hidden />
+            고객 지원
+          </h2>
           <div className="grid grid-cols-2 gap-3">
-            <div className="flex items-center text-gray-600">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className="text-sm">고객센터</span>
+            <div className="flex items-center gap-2 rounded-xl bg-white/70 px-3 py-2.5 text-gray-700 ring-1 ring-purple-100/60">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
+              <span className="text-sm font-medium">고객센터</span>
             </div>
-            <div className="flex items-center text-gray-600">
-              <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span className="text-sm">자주 묻는 질문</span>
+            <div className="flex items-center gap-2 rounded-xl bg-white/70 px-3 py-2.5 text-gray-700 ring-1 ring-indigo-100/60">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600">
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <span className="text-sm font-medium">자주 묻는 질문</span>
             </div>
           </div>
         </div>

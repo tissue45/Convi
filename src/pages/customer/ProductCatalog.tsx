@@ -285,7 +285,7 @@ const ProductCatalog: React.FC = () => {
 
   if (!selectedStore.id) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <div className="text-gray-600 mb-4">지점을 먼저 선택해주세요.</div>
           <button 
@@ -301,7 +301,7 @@ const ProductCatalog: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-4">{error}</div>
           <button 
@@ -322,30 +322,28 @@ const ProductCatalog: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-6">
         {/* 헤더 */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">{selectedStore.name}</h1>
-              <p className="text-gray-600 text-sm">{selectedStore.address}</p>
-              {/* 현재 카테고리 표시 */}
-              <p className="text-blue-600 text-sm font-medium mt-1">
-                📂 {getCurrentCategoryName}
+        <div className="mb-6 overflow-hidden rounded-2xl border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/30 p-6 shadow-md shadow-blue-900/5">
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <div className="min-w-0">
+              <h1 className="truncate text-2xl font-bold text-gray-900">{selectedStore.name}</h1>
+              <p className="truncate text-sm text-gray-600">{selectedStore.address}</p>
+              <p className="mt-1 inline-flex items-center gap-1 rounded-full bg-white/80 px-2.5 py-0.5 text-sm font-semibold text-blue-700 ring-1 ring-blue-200/60">
+                <span aria-hidden>📂</span> {getCurrentCategoryName}
               </p>
             </div>
-            <div className="flex items-center space-x-3">
-              {/* 장바구니 아이콘 */}
+            <div className="flex shrink-0 items-center gap-2">
               <button
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-gray-600 hover:text-gray-900"
+                className="relative rounded-xl p-2.5 text-gray-600 transition hover:bg-white/80 hover:text-blue-700"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                 </svg>
                 {getItemCount() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  <span className="absolute -right-0.5 -top-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 text-xs font-bold text-white shadow-sm">
                     {getItemCount()}
                   </span>
                 )}
@@ -353,7 +351,7 @@ const ProductCatalog: React.FC = () => {
               
               <button
                 onClick={goBackToStoreSelection}
-                className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                className="rounded-full bg-white/90 px-3 py-1.5 text-sm font-semibold text-purple-600 ring-1 ring-purple-200/60 transition hover:bg-purple-50"
               >
                 지점 변경
               </button>
@@ -365,7 +363,7 @@ const ProductCatalog: React.FC = () => {
             <input
               type="text"
               placeholder="상품 검색..."
-              className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full rounded-xl border border-blue-100/80 bg-white/90 p-3 pl-10 shadow-inner ring-1 ring-white/60 focus:border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-400/40"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -381,13 +379,16 @@ const ProductCatalog: React.FC = () => {
         </div>
         
         {/* 카테고리 필터 */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">카테고리</h2>
+        <div className="mb-6 rounded-2xl border border-gray-100 bg-white/90 p-6 shadow-md shadow-blue-900/5 backdrop-blur-sm">
+          <h2 className="mb-4 flex items-center gap-2 text-lg font-bold text-gray-900">
+            <span className="h-2 w-2 rounded-full bg-gradient-to-r from-blue-400 to-indigo-500" aria-hidden />
+            카테고리
+          </h2>
           <div className="flex flex-wrap gap-3 overflow-x-auto pb-2">
             <button
-              className={`px-6 py-3 rounded-full whitespace-nowrap font-medium transition-all duration-200 shadow-sm ${
+              className={`rounded-full px-6 py-3 whitespace-nowrap font-semibold shadow-sm transition-all duration-200 ${
                 selectedCategory === 'all'
-                  ? 'bg-blue-500 text-white shadow-blue-200'
+                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
               }`}
               onClick={() => handleCategoryChange('all')}
@@ -397,9 +398,9 @@ const ProductCatalog: React.FC = () => {
             {categories.map((category) => (
               <button
                 key={category.id}
-                className={`px-6 py-3 rounded-full whitespace-nowrap font-medium transition-all duration-200 shadow-sm ${
+                className={`rounded-full px-6 py-3 whitespace-nowrap font-semibold shadow-sm transition-all duration-200 ${
                   selectedCategory === category.id
-                    ? 'bg-blue-500 text-white shadow-blue-200'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:shadow-md'
                 }`}
                 onClick={() => handleCategoryChange(category.id)}

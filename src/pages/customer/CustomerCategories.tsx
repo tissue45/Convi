@@ -123,14 +123,12 @@ const CustomerCategories: React.FC = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="mx-auto max-w-4xl px-4 py-6">
       {/* 헤더 섹션 */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          상품 카테고리
-        </h1>
-        <p className="text-gray-600">
-          원하는 카테고리를 선택하여 상품을 둘러보세요
+      <div className="mb-8 overflow-hidden rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 p-6 text-white shadow-lg shadow-blue-500/25">
+        <h1 className="mb-2 text-3xl font-bold tracking-tight">상품 카테고리</h1>
+        <p className="text-sm text-white/90">
+          원하는 카테고리를 골라 바로 쇼핑을 시작해 보세요
         </p>
       </div>
 
@@ -188,21 +186,22 @@ const CustomerCategories: React.FC = () => {
       )}
 
       {/* 추가 정보 섹션 */}
-      <div className="mt-12 bg-white rounded-lg p-6 shadow-sm">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
-          🛍️ 쇼핑 안내
+      <div className="mt-12 rounded-2xl border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/40 to-purple-50/50 p-6 shadow-md shadow-blue-900/5 ring-1 ring-white/60">
+        <h2 className="mb-4 flex items-center gap-2 text-xl font-bold text-gray-900">
+          <span className="text-2xl" aria-hidden>🛍️</span>
+          쇼핑 안내
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600">
-          <div className="flex items-start space-x-2">
-            <span className="text-blue-500">1.</span>
+        <div className="grid grid-cols-1 gap-4 text-sm text-gray-700 md:grid-cols-3">
+          <div className="flex items-start gap-2 rounded-xl bg-white/70 p-3 ring-1 ring-blue-100/60">
+            <span className="font-bold text-blue-600">1</span>
             <span>원하는 카테고리를 선택하세요</span>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-blue-500">2.</span>
+          <div className="flex items-start gap-2 rounded-xl bg-white/70 p-3 ring-1 ring-indigo-100/60">
+            <span className="font-bold text-indigo-600">2</span>
             <span>상품을 장바구니에 담으세요</span>
           </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-blue-500">3.</span>
+          <div className="flex items-start gap-2 rounded-xl bg-white/70 p-3 ring-1 ring-purple-100/60">
+            <span className="font-bold text-purple-600">3</span>
             <span>결제 후 픽업 또는 배송을 받으세요</span>
           </div>
         </div>

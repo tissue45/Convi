@@ -21,44 +21,61 @@ const CustomerHeader: React.FC = () => {
 
   return (
     <>
-      <header className="bg-white shadow-sm border-b border-gray-200">
+      <header className="sticky top-0 z-40 border-b border-blue-100/80 bg-white/80 shadow-sm shadow-blue-900/5 backdrop-blur-md">
+        <div
+          className="h-1 w-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-600"
+          aria-hidden
+        />
         <div className="px-4 py-3">
-          <div className="flex items-center justify-between">
-            <h1
-              className="text-lg font-semibold text-gray-900 cursor-pointer"
-              onClick={() => navigate('/')}
-              style={{ userSelect: 'none' }}
+          <div className="flex items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={() => navigate('/customer/home')}
+              className="flex min-w-0 items-center gap-2 rounded-xl text-left transition-opacity hover:opacity-90"
             >
-              편의점 솔루션
-            </h1>
-            <div className="flex items-center space-x-4">
-              {/* 장바구니 아이콘 */}
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 text-lg shadow-md shadow-blue-500/30">
+                🏪
+              </span>
+              <div className="min-w-0">
+                <p className="truncate text-base font-bold tracking-tight text-gray-900">Convi</p>
+                <p className="truncate text-xs font-medium text-blue-600/90">고객 쇼핑</p>
+              </div>
+            </button>
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
               <button
+                type="button"
                 onClick={() => setIsCartOpen(true)}
-                className="relative p-2 text-gray-600 hover:text-gray-800 transition-colors"
+                className="relative rounded-xl p-2.5 text-gray-600 transition-colors hover:bg-blue-50 hover:text-blue-700"
+                aria-label="장바구니 미리보기"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
+                  />
                 </svg>
                 {itemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                  <span className="absolute -right-0.5 -top-0.5 flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-gradient-to-r from-rose-500 to-orange-500 px-1 text-xs font-bold text-white shadow-sm">
                     {itemCount > 99 ? '99+' : itemCount}
                   </span>
                 )}
               </button>
-              
-              {/* 장바구니 전체 페이지로 이동 버튼 */}
+
               <button
+                type="button"
                 onClick={() => navigate('/customer/cart')}
-                className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+                className="hidden rounded-full bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-1.5 text-xs font-semibold text-white shadow-md shadow-blue-500/25 transition hover:from-blue-600 hover:to-purple-700 sm:inline"
               >
                 장바구니
               </button>
-              
-              <span className="text-sm text-gray-600">
+
+              <span className="hidden max-w-[5.5rem] truncate text-xs font-medium text-gray-600 sm:inline md:max-w-[8rem]">
                 {getDisplayName()}님
               </span>
               <button
+                type="button"
                 onClick={async () => {
                   try {
                     await signOut();
@@ -68,7 +85,7 @@ const CustomerHeader: React.FC = () => {
                     window.location.reload();
                   }
                 }}
-                className="text-sm text-gray-500 hover:text-gray-700"
+                className="rounded-lg px-2 py-1.5 text-xs font-medium text-purple-600 transition hover:bg-purple-50"
               >
                 로그아웃
               </button>
@@ -77,10 +94,9 @@ const CustomerHeader: React.FC = () => {
         </div>
       </header>
 
-      {/* 장바구니 사이드 패널 */}
       <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 };
 
-export default CustomerHeader; 
+export default CustomerHeader;

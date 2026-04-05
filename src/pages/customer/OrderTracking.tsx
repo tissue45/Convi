@@ -68,7 +68,7 @@ const OrderTracking: React.FC = () => {
         return {
           text: '준비 중',
           description: order?.orderType === 'pickup' ? '상품을 준비하고 있습니다.' : '배송을 준비하고 있습니다.',
-          color: 'text-orange-600 bg-orange-50',
+          color: 'text-indigo-600 bg-indigo-50',
           icon: '👨‍🍳'
         };
       case 'ready':
@@ -132,7 +132,7 @@ const OrderTracking: React.FC = () => {
 
   if (!order) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -143,7 +143,7 @@ const OrderTracking: React.FC = () => {
   const currentStepIndex = getCurrentStepIndex();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-6 max-w-4xl">
         {/* 헤더 */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">

@@ -123,7 +123,7 @@ const CustomerOrders: React.FC = () => {
     switch (status) {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'confirmed': return 'bg-blue-100 text-blue-800';
-      case 'preparing': return 'bg-orange-100 text-orange-800';
+      case 'preparing': return 'bg-indigo-100 text-indigo-800';
       case 'ready': return 'bg-purple-100 text-purple-800';
       case 'delivering': return 'bg-indigo-100 text-indigo-800';
       case 'completed': return 'bg-green-100 text-green-800';
@@ -383,7 +383,7 @@ const CustomerOrders: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-6">
         {/* 헤더 */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -447,7 +447,7 @@ const CustomerOrders: React.FC = () => {
                       )}
                       {/* 환불 정보 표시 */}
                       {getRefundStatusInfo(order.id) && (
-                        <div className="mt-2 p-2 bg-gray-50 rounded border-l-4 border-orange-400">
+                        <div className="mt-2 p-2 bg-gray-50 rounded border-l-4 border-indigo-400">
                           <div className="text-sm font-medium text-gray-700">
                             환불 정보: {getRefundStatusInfo(order.id)?.text}
                           </div>
@@ -538,7 +538,7 @@ const CustomerOrders: React.FC = () => {
                   {order.status === 'completed' && !getRefundStatusInfo(order.id) && (
                     <button 
                       onClick={() => openRefundModal(order)}
-                      className="flex-1 bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-colors flex items-center justify-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
@@ -775,7 +775,7 @@ const CustomerOrders: React.FC = () => {
                 <button
                   onClick={submitRefundRequest}
                   disabled={isSubmitting || totalRefundAmount === 0 || !refundReason}
-                  className="flex-1 px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md hover:from-blue-700 hover:to-purple-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? '제출 중...' : '환불 요청 제출'}
                 </button>

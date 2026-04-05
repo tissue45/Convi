@@ -1388,7 +1388,7 @@ const StoreSupply: React.FC = () => {
                             </span>
                           </div>
                           {filteredModalProducts.length === 0 && (
-                            <span className="text-orange-600">검색 결과가 없습니다.</span>
+                            <span className="text-teal-600">검색 결과가 없습니다.</span>
                           )}
                         </div>
                       )}

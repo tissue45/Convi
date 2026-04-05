@@ -10,16 +10,16 @@ const ProductExcelTemplate: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-pink-50">
       <div className="max-w-7xl mx-auto px-4 py-12">
         {/* 헤더 섹션 */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6 shadow-lg">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-red-600 to-pink-600 rounded-full mb-6 shadow-lg">
             <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent mb-6">
             📊 상품 일괄 등록 시스템
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -35,7 +35,7 @@ const ProductExcelTemplate: React.FC = () => {
           <div className="xl:col-span-1">
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 h-fit">
               <div className="text-center mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
@@ -51,7 +51,7 @@ const ProductExcelTemplate: React.FC = () => {
           <div className="xl:col-span-2">
             <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
               <div className="text-center mb-8">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <div className="w-16 h-16 bg-gradient-to-r from-rose-400 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -90,76 +90,76 @@ const ProductExcelTemplate: React.FC = () => {
                 </div>
 
                 {/* 선택 입력 항목 */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+                <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl p-6 border border-rose-100">
                   <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
+                    <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center mr-3">
                       <span className="text-white font-bold text-sm">💡</span>
                     </div>
-                    <h4 className="font-bold text-blue-800 text-lg">선택 입력 항목</h4>
+                    <h4 className="font-bold text-pink-800 text-lg">선택 입력 항목</h4>
                   </div>
-                  <ul className="space-y-3 text-sm text-blue-700">
+                  <ul className="space-y-3 text-sm text-pink-700">
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>브랜드</strong> - 상품 브랜드명</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>제조사</strong> - 제조 회사명</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>원가</strong> - 상품 원가 (수익률 계산용)</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>세율</strong> - 부가세율 (기본값: 0.1 = 10%)</span>
                     </li>
                   </ul>
                 </div>
 
                 {/* 고급 설정 */}
-                <div className="bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl p-6 border border-purple-100">
+                <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-6 border border-pink-100">
                   <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center mr-3">
+                    <div className="w-8 h-8 bg-rose-500 rounded-lg flex items-center justify-center mr-3">
                       <span className="text-white font-bold text-sm">⚙️</span>
                     </div>
-                    <h4 className="font-bold text-purple-800 text-lg">고급 설정</h4>
+                    <h4 className="font-bold text-rose-800 text-lg">고급 설정</h4>
                   </div>
-                  <ul className="space-y-3 text-sm text-purple-700">
+                  <ul className="space-y-3 text-sm text-rose-700">
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>영양정보</strong> - JSON 형식으로 입력</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>알레르기정보</strong> - 쉼표로 구분하여 입력</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>유통기한</strong> - 일 단위로 입력</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-rose-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>준비시간</strong> - 분 단위로 입력</span>
                     </li>
                   </ul>
                 </div>
 
                 {/* 이미지 관리 */}
-                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-100">
+                <div className="bg-gradient-to-br from-red-50/80 to-rose-50 rounded-xl p-6 border border-red-100">
                   <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center mr-3">
+                    <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center mr-3">
                       <span className="text-white font-bold text-sm">📸</span>
                     </div>
-                    <h4 className="font-bold text-emerald-800 text-lg">이미지 관리</h4>
+                    <h4 className="font-bold text-red-800 text-lg">이미지 관리</h4>
                   </div>
-                  <ul className="space-y-3 text-sm text-emerald-700">
+                  <ul className="space-y-3 text-sm text-red-700">
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>이미지URL</strong> - 쉼표(,)로 구분하여 여러 이미지 입력</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-2 h-2 bg-emerald-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span><strong>활성화여부</strong> - Y(활성) 또는 N(비활성)</span>
                     </li>
                   </ul>
@@ -167,28 +167,28 @@ const ProductExcelTemplate: React.FC = () => {
               </div>
 
               {/* 팁 섹션 */}
-              <div className="mt-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-xl border border-amber-100">
+              <div className="mt-8 p-6 bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl border border-pink-100">
                 <div className="flex items-center mb-4">
-                  <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center mr-3">
                     <span className="text-white font-bold text-sm">💡</span>
                   </div>
-                  <h4 className="font-bold text-amber-800 text-lg">유용한 팁</h4>
+                  <h4 className="font-bold text-pink-800 text-lg">유용한 팁</h4>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-amber-800">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-pink-800">
                   <div className="flex items-start">
-                    <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                     <span>샘플 데이터를 참고하여 입력 형식을 확인하세요</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                     <span>영양정보는 정확한 JSON 형식으로 입력해야 합니다</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                     <span>이미지URL은 유효한 링크여야 합니다</span>
                   </div>
                   <div className="flex items-start">
-                    <span className="w-2 h-2 bg-amber-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                     <span>대량 상품 등록 시 템플릿을 복사하여 사용하세요</span>
                   </div>
                 </div>
@@ -201,7 +201,7 @@ const ProductExcelTemplate: React.FC = () => {
         <div className="mb-16">
           <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
             <div className="text-center mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-indigo-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-400 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                 </svg>
@@ -238,12 +238,12 @@ const ProductExcelTemplate: React.FC = () => {
                   <div className="text-red-700 font-medium">실패</div>
                   <div className="text-red-600 text-sm mt-1">오류 발생</div>
                 </div>
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
-                  <div className="text-3xl font-bold text-blue-600 mb-2">
+                <div className="bg-gradient-to-br from-pink-50 to-rose-50 p-6 rounded-xl border border-pink-200">
+                  <div className="text-3xl font-bold text-pink-600 mb-2">
                     {uploadResults.length}
                   </div>
-                  <div className="text-blue-700 font-medium">전체</div>
-                  <div className="text-blue-600 text-sm mt-1">처리된 항목</div>
+                  <div className="text-pink-700 font-medium">전체</div>
+                  <div className="text-pink-600 text-sm mt-1">처리된 항목</div>
                 </div>
               </div>
             </div>

@@ -66,7 +66,7 @@ const PRIORITY_LABELS = {
 const PRIORITY_COLORS = {
   low: 'bg-gray-100 text-gray-800',
   normal: 'bg-blue-100 text-blue-800',
-  high: 'bg-orange-100 text-orange-800',
+  high: 'bg-teal-100 text-teal-800',
   urgent: 'bg-red-100 text-red-800'
 };
 

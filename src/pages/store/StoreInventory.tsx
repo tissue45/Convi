@@ -556,7 +556,7 @@ const StoreInventory: React.FC = () => {
 
   const getStockStatus = (current: number, safety: number) => {
     if (current <= 0) return { color: 'bg-red-100 text-red-800', text: '품절' };
-    if (current <= safety) return { color: 'bg-orange-100 text-orange-800', text: '부족' };
+    if (current <= safety) return { color: 'bg-teal-100 text-teal-800', text: '부족' };
     return { color: 'bg-green-100 text-green-800', text: '충분' };
   };
 
@@ -997,7 +997,7 @@ const StoreInventory: React.FC = () => {
         </div>
         <div className="bg-white rounded-lg shadow p-4">
           <div className="text-sm font-medium text-gray-500">재고 부족</div>
-          <div className="text-2xl font-bold text-orange-600">
+          <div className="text-2xl font-bold text-teal-600">
             {viewMode === 'current'
               ? (() => {
                 // 상품별로 그룹화하여 총 재고량 계산
@@ -1171,7 +1171,7 @@ const StoreInventory: React.FC = () => {
                 </span>
               </div>
               {finalDisplayData.length === 0 && (
-                <span className="text-orange-600">검색 결과가 없습니다.</span>
+                <span className="text-teal-600">검색 결과가 없습니다.</span>
               )}
             </div>
           )}
@@ -1238,7 +1238,7 @@ const StoreInventory: React.FC = () => {
                     : expiryStatus === 'danger'
                       ? 'bg-red-100 text-red-800'
                       : expiryStatus === 'warning'
-                        ? 'bg-orange-100 text-orange-800'
+                        ? 'bg-teal-100 text-teal-800'
                         : 'bg-green-100 text-green-800';
 
                   return (

@@ -360,7 +360,7 @@ const Checkout: React.FC = () => {
 
   if (items.length === 0 || !selectedStore.id) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -408,7 +408,7 @@ const Checkout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-6 max-w-4xl">
         {/* 헤더 */}
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">

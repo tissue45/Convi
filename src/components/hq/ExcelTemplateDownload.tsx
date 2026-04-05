@@ -925,8 +925,8 @@ const ExcelTemplateDownload: React.FC<{ className?: string }> = ({ className = '
       </div>
 
       {/* 새로운 기능 안내 */}
-      <div className="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
-        <h2 className="text-xl font-semibold text-blue-800 mb-4 flex items-center">
+      <div className="mb-8 p-6 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border border-red-200">
+        <h2 className="text-xl font-semibold text-red-800 mb-4 flex items-center">
           <span className="mr-2">✨</span>
           기존 모달과 동일한 구성 + 이미지 기능
         </h2>
@@ -991,7 +991,7 @@ const ExcelTemplateDownload: React.FC<{ className?: string }> = ({ className = '
       <button
         onClick={downloadTemplate}
         disabled={isDownloading}
-        className={`w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+        className={`w-full bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
           isDownloading ? 'opacity-50 cursor-not-allowed' : ''
         }`}
       >
@@ -1031,9 +1031,9 @@ const ExcelTemplateDownload: React.FC<{ className?: string }> = ({ className = '
         </div>
       </div>
 
-      <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+      <div className="mt-6 p-4 bg-gradient-to-r from-red-50 to-pink-50 rounded-xl border border-red-200">
         <div className="flex items-center justify-center">
-          <span className="text-blue-600 text-sm font-medium">
+          <span className="text-red-600 text-sm font-medium">
             💡 다운로드 후 카테고리가이드를 참고하여 상품 정보를 입력하세요
           </span>
         </div>

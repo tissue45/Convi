@@ -146,7 +146,7 @@ const StoreRefunds: React.FC = () => {
   const getPriorityColor = (priority: RefundPriority) => {
     switch (priority) {
       case 'urgent': return 'bg-red-100 text-red-800';
-      case 'high': return 'bg-orange-100 text-orange-800';
+      case 'high': return 'bg-teal-100 text-teal-800';
       case 'normal': return 'bg-blue-100 text-blue-800';
       case 'low': return 'bg-gray-100 text-gray-800';
       default: return 'bg-gray-100 text-gray-800';

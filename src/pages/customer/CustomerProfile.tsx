@@ -355,7 +355,7 @@ const CustomerProfile: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -363,7 +363,7 @@ const CustomerProfile: React.FC = () => {
 
   if (!profile) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 mb-4">프로필을 불러올 수 없습니다.</p>
           <button
@@ -378,7 +378,7 @@ const CustomerProfile: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
@@ -1099,11 +1099,11 @@ const CustomerProfile: React.FC = () => {
                   </button>
                   <button
                     onClick={() => navigate('/customer/refunds')}
-                    className="w-full text-left p-4 rounded-lg border border-gray-200 hover:bg-orange-50 hover:border-orange-300 transition-all duration-200 group"
+                    className="w-full text-left p-4 rounded-lg border border-gray-200 hover:bg-indigo-50 hover:border-indigo-300 transition-all duration-200 group"
                   >
                     <div className="flex items-center">
-                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-orange-200 transition-colors">
-                        <svg className="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mr-3 group-hover:bg-indigo-200 transition-colors">
+                        <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
                         </svg>
                       </div>

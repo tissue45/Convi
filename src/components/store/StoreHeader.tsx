@@ -7,21 +7,32 @@ const StoreHeader: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
-      <div className="px-6 py-4">
-        <div className="flex items-center justify-between">
-          <h1
-            className="text-xl font-semibold text-gray-900 cursor-pointer"
-            onClick={() => navigate('/')}
-            style={{ userSelect: 'none' }}
+    <header className="sticky top-0 z-30 border-b border-green-100/80 bg-white/85 shadow-sm shadow-green-900/5 backdrop-blur-md">
+      <div
+        className="h-1 w-full bg-gradient-to-r from-green-500 via-teal-500 to-emerald-600"
+        aria-hidden
+      />
+      <div className="px-4 py-3 sm:px-6 sm:py-3.5">
+        <div className="flex items-center justify-between gap-3">
+          <button
+            type="button"
+            onClick={() => navigate('/store/dashboard')}
+            className="flex min-w-0 items-center gap-3 rounded-xl text-left transition-opacity hover:opacity-90"
           >
-            점주 대시보드
-          </h1>
-          <div className="flex items-center space-x-4">
-            <span className="text-sm text-gray-600">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-teal-600 text-lg shadow-md shadow-green-500/35">
+              🏬
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-lg font-bold tracking-tight text-slate-900">점주 대시보드</p>
+              <p className="truncate text-xs font-medium text-green-700/90">매장 운영 · 주문 · 재고</p>
+            </div>
+          </button>
+          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+            <span className="hidden max-w-[10rem] truncate text-sm font-medium text-slate-600 sm:inline">
               {profile?.first_name} {profile?.last_name}
             </span>
             <button
+              type="button"
               onClick={async () => {
                 try {
                   await signOut();
@@ -31,7 +42,7 @@ const StoreHeader: React.FC = () => {
                   window.location.reload();
                 }
               }}
-              className="text-sm text-gray-500 hover:text-gray-700"
+              className="rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 ring-1 ring-slate-200/80 transition hover:bg-slate-50"
             >
               로그아웃
             </button>
@@ -42,4 +53,4 @@ const StoreHeader: React.FC = () => {
   );
 };
 
-export default StoreHeader; 
+export default StoreHeader;

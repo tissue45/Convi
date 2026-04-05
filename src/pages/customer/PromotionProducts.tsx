@@ -213,7 +213,7 @@ const PromotionProducts: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">행사 상품을 불러오는 중...</p>
@@ -223,7 +223,7 @@ const PromotionProducts: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       {/* 헤더 */}
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="px-4 py-4">
@@ -368,7 +368,7 @@ const PromotionProducts: React.FC = () => {
                       <span className={`text-xs ${
                         product.stockQuantity > 0 
                           ? product.stockQuantity <= 5 
-                            ? 'text-orange-600' 
+                            ? 'text-purple-600' 
                             : 'text-green-600'
                           : 'text-red-600'
                       }`}>
@@ -378,7 +378,7 @@ const PromotionProducts: React.FC = () => {
                         }
                       </span>
                       {product.stockQuantity > 0 && product.stockQuantity <= 5 && (
-                        <span className="text-xs text-orange-600 font-medium">
+                        <span className="text-xs text-purple-600 font-medium">
                           마감임박
                         </span>
                       )}

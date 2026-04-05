@@ -233,7 +233,7 @@ const StoreSelection: React.FC = () => {
   if (loading) {
     console.log('🔄 로딩 스피너 표시 중...');
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <LoadingSpinner size="lg" />
       </div>
     );
@@ -241,7 +241,7 @@ const StoreSelection: React.FC = () => {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-transparent flex items-center justify-center">
         <div className="text-center">
           <div className="text-red-600 mb-4">{error}</div>
           <button 
@@ -256,7 +256,7 @@ const StoreSelection: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-8">
         <Location width="100%" height="600px" />
         <div className="text-center mb-8">

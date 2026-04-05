@@ -67,18 +67,18 @@ const CartPage: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-transparent">
         <div className="container mx-auto px-4 py-6">
-          <div className="bg-white rounded-lg shadow-sm p-12 text-center">
-            <div className="text-gray-400 mb-4">
-              <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="rounded-2xl border border-blue-100/80 bg-white/90 p-12 text-center shadow-lg shadow-blue-900/5 ring-1 ring-white/60 backdrop-blur-sm">
+            <div className="mb-4 text-gray-400">
+              <svg className="mx-auto h-16 w-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
               </svg>
             </div>
-            <p className="text-gray-500 mb-4">장바구니가 비어있습니다.</p>
+            <p className="mb-4 text-gray-600">장바구니가 비어있습니다.</p>
             <button
               onClick={handleContinueShopping}
-              className="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"
+              className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 px-8 py-2.5 font-semibold text-white shadow-md shadow-blue-500/25 transition hover:from-blue-600 hover:to-purple-700"
             >
               쇼핑 계속하기
             </button>
@@ -89,27 +89,29 @@ const CartPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-transparent">
       <div className="container mx-auto px-4 py-6">
         {/* 헤더 */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <div className="flex items-center justify-between">
+        <div className="mb-6 overflow-hidden rounded-2xl border border-blue-100/80 bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-6 shadow-md shadow-blue-900/5">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">장바구니</h1>
-              <p className="text-gray-600 mt-1">
-                {storeName} • 총 {items.length}개 상품
+              <h1 className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-2xl font-bold text-transparent">
+                장바구니
+              </h1>
+              <p className="mt-1 text-sm font-medium text-gray-600">
+                {storeName} · 총 {items.length}개 상품
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button
                 onClick={handleClearCart}
-                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-semibold text-rose-700 transition hover:bg-rose-100"
               >
                 장바구니 비우기
               </button>
               <button
                 onClick={handleContinueShopping}
-                className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+                className="rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition hover:from-blue-600 hover:to-purple-700"
               >
                 쇼핑 계속하기
               </button>
@@ -120,9 +122,9 @@ const CartPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* 장바구니 상품 목록 */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm">
-              <div className="p-6 border-b">
-                <h2 className="text-lg font-semibold">상품 목록</h2>
+            <div className="overflow-hidden rounded-2xl border border-gray-100 bg-white/95 shadow-md shadow-blue-900/5">
+              <div className="border-b border-blue-50 bg-gradient-to-r from-blue-50/50 to-transparent p-6">
+                <h2 className="text-lg font-bold text-gray-900">상품 목록</h2>
               </div>
               <div className="divide-y">
                 {items.map((item) => (
@@ -217,20 +219,20 @@ const CartPage: React.FC = () => {
 
           {/* 주문 요약 */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-lg shadow-sm p-6 sticky top-6">
-              <h2 className="text-lg font-semibold mb-4">주문 요약</h2>
+            <div className="sticky top-6 rounded-2xl border border-blue-100/80 bg-white/95 p-6 shadow-lg shadow-blue-900/10 ring-1 ring-white/60 backdrop-blur-sm">
+              <h2 className="mb-4 text-lg font-bold text-gray-900">주문 요약</h2>
               
               {/* 주문 타입 선택 */}
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="mb-2 block text-sm font-medium text-gray-700">
                   주문 타입
                 </label>
-                <div className="flex space-x-2">
+                <div className="flex gap-2">
                   <button
                     onClick={() => setOrderType('pickup')}
-                    className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex-1 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all ${
                       orderType === 'pickup'
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -238,9 +240,9 @@ const CartPage: React.FC = () => {
                   </button>
                   <button
                     onClick={() => setOrderType('delivery')}
-                    className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex-1 rounded-xl px-3 py-2.5 text-sm font-semibold transition-all ${
                       orderType === 'delivery'
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md shadow-blue-500/25'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -265,10 +267,12 @@ const CartPage: React.FC = () => {
                     <span>{deliveryFee.toLocaleString()}원</span>
                   </div>
                 )}
-                <div className="border-t pt-2">
-                  <div className="flex justify-between font-semibold text-lg">
+                <div className="border-t border-blue-100 pt-2">
+                  <div className="flex justify-between text-lg font-bold">
                     <span>총 결제 금액</span>
-                    <span className="text-blue-600">{totalAmount.toLocaleString()}원</span>
+                    <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                      {totalAmount.toLocaleString()}원
+                    </span>
                   </div>
                 </div>
               </div>
@@ -277,7 +281,7 @@ const CartPage: React.FC = () => {
               <button
                 onClick={handleCheckout}
                 disabled={items.length === 0 || isUpdating}
-                className="w-full mt-6 bg-blue-500 text-white py-3 px-4 rounded-lg font-medium hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="mt-6 w-full rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 py-3.5 font-semibold text-white shadow-lg shadow-blue-500/30 transition hover:from-blue-600 hover:to-purple-700 disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {isUpdating ? (
                   <div className="flex items-center justify-center">

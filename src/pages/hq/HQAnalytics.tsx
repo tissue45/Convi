@@ -237,23 +237,23 @@ const HQAnalytics: React.FC = () => {
   };
 
   const COLORS = [
-    '#3b82f6', // blue-500
+    '#ef4444', // red-500
     '#10b981', // emerald-500
     '#f59e0b', // amber-500
-    '#ef4444', // red-500
-    '#8b5cf6', // violet-500
-    '#06b6d4', // cyan-500
+    '#f43f5e', // rose-500
+    '#ec4899', // pink-500
+    '#fb7185', // rose-400
     '#84cc16', // lime-500
     '#f97316', // orange-500
   ];
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-pink-50 flex items-center justify-center">
         <div className="text-center">
           <div className="relative">
-            <div className="w-20 h-20 border-4 border-blue-200 rounded-full animate-pulse"></div>
-            <div className="absolute top-0 left-0 w-20 h-20 border-4 border-blue-500 rounded-full animate-spin border-t-transparent"></div>
+            <div className="w-20 h-20 border-4 border-red-200 rounded-full animate-pulse"></div>
+            <div className="absolute top-0 left-0 w-20 h-20 border-4 border-red-500 rounded-full animate-spin border-t-transparent"></div>
           </div>
           <div className="mt-6">
             <h3 className="text-xl font-bold text-gray-900 mb-2">📊 매출 분석 데이터 로딩 중</h3>
@@ -265,14 +265,14 @@ const HQAnalytics: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-red-50 to-pink-50">
       <div className="container mx-auto px-4 py-6">
         {/* 헤더 */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
               <div className="flex items-center space-x-3 mb-2">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl flex items-center justify-center">
                   <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
@@ -290,7 +290,7 @@ const HQAnalytics: React.FC = () => {
                     type="date"
                     value={dateRange.startDate}
                     onChange={(e) => setDateRange(prev => ({ ...prev, startDate: e.target.value }))}
-                    className="border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                    className="border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-red-500 focus:ring-4 focus:ring-red-100 transition-all duration-200 bg-white/80 backdrop-blur-sm"
                   />
                 </div>
                 <div>
@@ -299,7 +299,7 @@ const HQAnalytics: React.FC = () => {
                     type="date"
                     value={dateRange.endDate}
                     onChange={(e) => setDateRange(prev => ({ ...prev, endDate: e.target.value }))}
-                    className="border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                    className="border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-red-500 focus:ring-4 focus:ring-red-100 transition-all duration-200 bg-white/80 backdrop-blur-sm"
                   />
                 </div>
               </div>
@@ -319,7 +319,7 @@ const HQAnalytics: React.FC = () => {
               <button
                 onClick={handleExportToExcel}
                 disabled={isExporting}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed flex items-center gap-2 transition-all duration-200"
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 disabled:bg-red-400 disabled:cursor-not-allowed flex items-center gap-2 transition-all duration-200"
               >
                 {isExporting ? (
                   <>
@@ -345,14 +345,14 @@ const HQAnalytics: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 hover:shadow-xl transition-all duration-300 group">
               <div className="flex items-center">
-                <div className="p-3 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                   </svg>
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-semibold text-gray-600 mb-1">💰 총 매출</p>
-                  <p className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">{formatCurrency(salesSummary.total_revenue)}</p>
+                  <p className="text-2xl font-bold bg-gradient-to-r from-red-600 to-pink-800 bg-clip-text text-transparent">{formatCurrency(salesSummary.total_revenue)}</p>
                 </div>
               </div>
             </div>
@@ -387,14 +387,14 @@ const HQAnalytics: React.FC = () => {
 
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 hover:shadow-xl transition-all duration-300 group">
               <div className="flex items-center">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-violet-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                <div className="p-3 bg-gradient-to-r from-rose-500 to-pink-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                   <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                   </svg>
                 </div>
                 <div className="ml-4">
                   <p className="text-sm font-semibold text-gray-600 mb-1">📊 총 주문</p>
-                  <p className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-violet-800 bg-clip-text text-transparent">{formatNumber(salesSummary.total_orders)}</p>
+                  <p className="text-2xl font-bold bg-gradient-to-r from-rose-600 to-pink-800 bg-clip-text text-transparent">{formatNumber(salesSummary.total_orders)}</p>
                 </div>
               </div>
             </div>
@@ -452,7 +452,7 @@ const HQAnalytics: React.FC = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-6 hover:shadow-xl transition-all duration-300 group">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="p-3 bg-gradient-to-r from-red-500 to-rose-600 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
@@ -460,11 +460,11 @@ const HQAnalytics: React.FC = () => {
                   <div className="ml-4">
                     <p className="text-sm font-semibold text-gray-600 mb-1">🚚 배송/픽업 비율</p>
                     <div className="flex space-x-2">
-                      <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-800 bg-clip-text text-transparent">
+                      <span className="text-lg font-bold bg-gradient-to-r from-red-600 to-rose-800 bg-clip-text text-transparent">
                         {analyticsData?.pickupRate || 0}%
                       </span>
                       <span className="text-lg font-bold text-gray-400">/</span>
-                      <span className="text-lg font-bold bg-gradient-to-r from-cyan-600 to-blue-800 bg-clip-text text-transparent">
+                      <span className="text-lg font-bold bg-gradient-to-r from-rose-600 to-red-800 bg-clip-text text-transparent">
                         {analyticsData?.deliveryRate || 0}%
                       </span>
                     </div>
@@ -484,7 +484,7 @@ const HQAnalytics: React.FC = () => {
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 mb-8 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-violet-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-rose-600 rounded-lg flex items-center justify-center mr-3">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
@@ -497,7 +497,7 @@ const HQAnalytics: React.FC = () => {
                 <div className="text-xs text-gray-500">전주 대비</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">+{((Math.random() * 10) + 2).toFixed(1)}%</div>
+                <div className="text-2xl font-bold text-red-600">+{((Math.random() * 10) + 2).toFixed(1)}%</div>
                 <div className="text-xs text-gray-500">전년 동월 대비</div>
               </div>
             </div>
@@ -508,15 +508,15 @@ const HQAnalytics: React.FC = () => {
               <div className="text-sm font-semibold text-gray-700">최고 성장 시간대</div>
               <div className="text-lg font-bold text-green-600">12:00-13:00</div>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl">
+            <div className="text-center p-4 bg-gradient-to-br from-red-50 to-rose-50 rounded-xl">
               <div className="text-2xl mb-2">🏆</div>
               <div className="text-sm font-semibold text-gray-700">인기 결제 방법</div>
-              <div className="text-lg font-bold text-blue-600">카드 결제</div>
+              <div className="text-lg font-bold text-red-600">카드 결제</div>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-violet-50 rounded-xl">
+            <div className="text-center p-4 bg-gradient-to-br from-rose-50 to-pink-50 rounded-xl">
               <div className="text-2xl mb-2">⚡</div>
               <div className="text-sm font-semibold text-gray-700">평균 주문 처리 시간</div>
-              <div className="text-lg font-bold text-purple-600">{((Math.random() * 10) + 8).toFixed(1)}분</div>
+              <div className="text-lg font-bold text-pink-600">{((Math.random() * 10) + 8).toFixed(1)}분</div>
             </div>
           </div>
         </div>
@@ -526,7 +526,7 @@ const HQAnalytics: React.FC = () => {
           {/* 일별 매출 차트 */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center mr-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4" />
                 </svg>
@@ -587,7 +587,7 @@ const HQAnalytics: React.FC = () => {
           {/* 시간대별 매출 차트 */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 hover:shadow-xl transition-all duration-300">
             <div className="flex items-center mb-6">
-              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mr-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-rose-600 rounded-lg flex items-center justify-center mr-3">
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
                 </svg>
@@ -664,13 +664,13 @@ const HQAnalytics: React.FC = () => {
               </thead>
               <tbody className="bg-white">
                 {storeRankings.map((store, index) => (
-                  <tr key={store.store_id} className={`hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                  <tr key={store.store_id} className={`hover:bg-gradient-to-r hover:from-red-50 hover:to-pink-50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-3 py-2 text-sm font-bold rounded-full ${
                         store.rank_position === 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg' :
                         store.rank_position === 2 ? 'bg-gradient-to-r from-gray-300 to-gray-500 text-white shadow-lg' :
                         store.rank_position === 3 ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg' :
-                        'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-md'
+                        'bg-gradient-to-r from-red-400 to-pink-600 text-white shadow-md'
                       }`}>
                         {store.rank_position === 1 ? '🥇' : store.rank_position === 2 ? '🥈' : store.rank_position === 3 ? '🥉' : ''} {store.rank_position}위
                       </span>
@@ -681,10 +681,10 @@ const HQAnalytics: React.FC = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-green-600">
                       {formatCurrency(store.total_revenue)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-red-600">
                       {formatNumber(store.total_orders)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-pink-600">
                       {formatCurrency(store.avg_order_value)}
                     </td>
                   </tr>
@@ -697,7 +697,7 @@ const HQAnalytics: React.FC = () => {
         {/* 상품별 순위 */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 mb-8 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center mb-6">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-violet-600 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-rose-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
               </svg>
@@ -718,13 +718,13 @@ const HQAnalytics: React.FC = () => {
               </thead>
               <tbody className="bg-white">
                 {productRankings.slice(0, 10).map((product, index) => (
-                  <tr key={product.product_id} className={`hover:bg-gradient-to-r hover:from-purple-50 hover:to-violet-50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                  <tr key={product.product_id} className={`hover:bg-gradient-to-r hover:from-rose-50 hover:to-pink-50 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex px-3 py-2 text-sm font-bold rounded-full ${
                         product.rank_position === 1 ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg' :
                         product.rank_position === 2 ? 'bg-gradient-to-r from-gray-300 to-gray-500 text-white shadow-lg' :
                         product.rank_position === 3 ? 'bg-gradient-to-r from-orange-400 to-orange-600 text-white shadow-lg' :
-                        'bg-gradient-to-r from-blue-400 to-blue-600 text-white shadow-md'
+                        'bg-gradient-to-r from-red-400 to-pink-600 text-white shadow-md'
                       }`}>
                         {product.rank_position === 1 ? '🥇' : product.rank_position === 2 ? '🥈' : product.rank_position === 3 ? '🥉' : ''} {product.rank_position}위
                       </span>
@@ -737,13 +737,13 @@ const HQAnalytics: React.FC = () => {
                         {product.category_name || '-'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-blue-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-red-600">
                       {formatNumber(product.total_sold)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-green-600">
                       {formatCurrency(product.total_revenue)}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-purple-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-pink-600">
                       {formatCurrency(product.avg_price)}
                     </td>
                   </tr>
@@ -756,7 +756,7 @@ const HQAnalytics: React.FC = () => {
         {/* 결제 방법별 분석 */}
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/50 p-8 hover:shadow-xl transition-all duration-300">
           <div className="flex items-center mb-6">
-            <div className="w-8 h-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-600 rounded-lg flex items-center justify-center mr-3">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
               </svg>

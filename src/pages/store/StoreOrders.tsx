@@ -112,7 +112,7 @@ const StoreOrders: React.FC = () => {
     const statusMap = {
       pending: { text: '주문 접수', color: 'bg-yellow-100 text-yellow-800', nextAction: '주문 확인' },
       confirmed: { text: '주문 확인', color: 'bg-blue-100 text-blue-800', nextAction: '준비 시작' },
-      preparing: { text: '준비 중', color: 'bg-orange-100 text-orange-800', nextAction: '준비 완료' },
+      preparing: { text: '준비 중', color: 'bg-teal-100 text-teal-800', nextAction: '준비 완료' },
       ready: { text: '픽업 대기', color: 'bg-purple-100 text-purple-800', nextAction: '완료 처리' },
       completed: { text: '완료', color: 'bg-green-100 text-green-800', nextAction: null },
       cancelled: { text: '취소', color: 'bg-red-100 text-red-800', nextAction: null }
